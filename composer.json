@@ -1,0 +1,27 @@
+{
+    "name": "viviniko/permission",
+    "description": "VIVINIKO Permission Service Provider",
+	"keywords": ["viviniko", "permission", "laravel"],
+	"homepage": "http://viviniko.com",
+	"license": "MIT",
+	"authors": [
+        {
+            "name": "viviniko",
+            "email": "viviniko.shop@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/auth": "~5.0",
+        "viviniko/repository": "dev-master",
+        "viviniko/support": "dev-master",
+        "zizaco/entrust": "^1.8"
+    },
+	"autoload": {
+        "psr-0": {
+            "Viviniko\\Permission": "src"
+        }
+    },
+    "minimum-stability": "dev",
+	"prefer-stable": true
+}
