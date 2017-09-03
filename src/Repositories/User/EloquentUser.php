@@ -1,11 +1,10 @@
 <?php
 
-namespace Viviniko\Permission\Services\User;
+namespace Viviniko\Permission\Repositories\User;
 
 use Viviniko\Repository\SimpleRepository;
-use Viviniko\Permission\Contracts\UserService as UserServiceInterface;
 
-class EloquentUser extends SimpleRepository implements UserServiceInterface
+class EloquentUser extends SimpleRepository implements UserRepository
 {
     use ValidatesUserData;
 

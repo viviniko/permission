@@ -41,11 +41,7 @@ class PermissionServiceProvider extends BaseServiceProvider
 
         $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'entrust');
 
-        $this->registerUserService();
-
-        $this->registerRoleService();
-
-        $this->registerPermissionService();
+        $this->registerRepositories();
 
         $this->registerCommands();
     }
@@ -67,37 +63,21 @@ class PermissionServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerUserService()
+    protected function registerRepositories()
     {
         $this->app->singleton(
-            \Viviniko\Permission\Contracts\UserService::class,
-            \Viviniko\Permission\Services\User\EloquentUser::class
+            \Viviniko\Permission\Repositories\User\UserRepository::class,
+            \Viviniko\Permission\Repositories\User\EloquentUser::class
         );
-    }
 
-    /**
-     * Register the role service provider.
-     *
-     * @return void
-     */
-    protected function registerRoleService()
-    {
         $this->app->singleton(
-            \Viviniko\Permission\Contracts\RoleService::class,
-            \Viviniko\Permission\Services\Role\EloquentRole::class
+            \Viviniko\Permission\Repositories\Role\RoleRepository::class,
+            \Viviniko\Permission\Repositories\Role\EloquentRole::class
         );
-    }
 
-    /**
-     * Register the role service provider.
-     *
-     * @return void
-     */
-    protected function registerPermissionService()
-    {
         $this->app->singleton(
-            \Viviniko\Permission\Contracts\PermissionService::class,
-            \Viviniko\Permission\Services\Permission\EloquentPermission::class
+            \Viviniko\Permission\Repositories\Permission\PermissionRepository::class,
+            \Viviniko\Permission\Repositories\Permission\EloquentPermission::class
         );
     }
 
@@ -109,9 +89,10 @@ class PermissionServiceProvider extends BaseServiceProvider
     public function provides()
     {
         return [
-            \Viviniko\Permission\Contracts\UserService::class,
-            \Viviniko\Permission\Contracts\RoleService::class,
-            \Viviniko\Permission\Contracts\PermissionService::class
+            \Viviniko\Permission\Repositories\User\UserRepository::class,
+            \Viviniko\Permission\Repositories\Role\RoleRepository::class,
+            \Viviniko\Permission\Repositories\Permission\PermissionRepository::class,
+            \Viviniko\Permission\Contracts\UserService::class
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Viviniko\Permission\Services\Permission;
+namespace Viviniko\Permission\Repositories\Permission;
 
 use Viviniko\Repository\SimpleRepository;
 use Viviniko\Permission\Contracts\PermissionService as PermissionServiceInterface;

@@ -17,7 +17,7 @@
         "viviniko/support": "dev-master",
         "zizaco/entrust": "^1.8"
     },
-	"autoload": {
+    "autoload": {
         "psr-0": {
             "Viviniko\\Permission": "src"
         }
@@ -30,5 +30,5 @@
         }
     },
     "minimum-stability": "dev",
-	"prefer-stable": true
+    "prefer-stable": true
 }

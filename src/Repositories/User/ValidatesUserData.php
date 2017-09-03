@@ -1,6 +1,6 @@
 <?php
 
-namespace Viviniko\Permission\Services\User;
+namespace Viviniko\Permission\Repositories\User;
 
 use Viviniko\Support\ValidatesData;
 use Illuminate\Support\Facades\Config;

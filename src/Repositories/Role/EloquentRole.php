@@ -1,6 +1,6 @@
 <?php
 
-namespace Viviniko\Permission\Services\Role;
+namespace Viviniko\Permission\Repositories\Role;
 
 use Viviniko\Repository\SimpleRepository;
 use Illuminate\Support\Facades\Config;
