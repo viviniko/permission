@@ -62,6 +62,6 @@ interface PermissionRepository
      * @param string $key
      * @return mixed
      */
-    public function pluck($column = 'display_name', $key = 'id');
+    public function lists($column = 'display_name', $key = 'id');
 
 }
