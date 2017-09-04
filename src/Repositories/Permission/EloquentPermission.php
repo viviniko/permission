@@ -3,9 +3,8 @@
 namespace Viviniko\Permission\Repositories\Permission;
 
 use Viviniko\Repository\SimpleRepository;
-use Viviniko\Permission\Contracts\PermissionService as PermissionServiceInterface;
 
-class EloquentPermission extends SimpleRepository implements PermissionServiceInterface
+class EloquentPermission extends SimpleRepository implements PermissionRepository
 {
     protected $modelConfigKey = 'permission.permission';
 

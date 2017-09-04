@@ -6,12 +6,14 @@ use Viviniko\Permission\Models\Role;
 
 interface RoleRepository
 {
-	/**
-	 * Get all system roles.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Collection
-	 */
-	public function all();
+    /**
+     * Paginate users.
+     *
+     * @param mixed $query
+     *
+     * @return \Viviniko\Repository\Builder
+     */
+    public function search($query);
 
 	/**
 	 * Lists all system roles into $key => $column value pairs.

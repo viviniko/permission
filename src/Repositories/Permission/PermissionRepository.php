@@ -4,23 +4,14 @@ namespace Viviniko\Permission\Repositories\Permission;
 
 interface PermissionRepository
 {
-
     /**
-     * Get all system permissions.
+     * Paginate users.
      *
-     * @param array|null $search
-     * @return mixed
-     */
-    public function all(array $search = null);
-
-    /**
-     * Paginate permissions.
+     * @param mixed $query
      *
-     * @param $perPage
-     * @param array|null $search
-     * @return mixed
+     * @return \Viviniko\Repository\Builder
      */
-    public function paginate($perPage, array $search = null);
+    public function search($query);
 
 	/**
 	 * Finds the permission by given id.

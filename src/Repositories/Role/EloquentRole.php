@@ -4,9 +4,8 @@ namespace Viviniko\Permission\Repositories\Role;
 
 use Viviniko\Repository\SimpleRepository;
 use Illuminate\Support\Facades\Config;
-use Viviniko\Permission\Contracts\RoleService as RoleServiceInterface;
 
-class EloquentRole extends SimpleRepository implements RoleServiceInterface
+class EloquentRole extends SimpleRepository implements RoleRepository
 {
     protected $modelConfigKey = 'permission.role';
 
