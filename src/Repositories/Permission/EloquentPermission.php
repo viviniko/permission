@@ -11,6 +11,14 @@ class EloquentPermission extends SimpleRepository implements PermissionRepositor
     /**
      * {@inheritdoc}
      */
+    public function all()
+    {
+        return $this->search([])->get();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function lists($column = 'display_name', $key = 'id')
     {
         return $this->pluck($column, $key);

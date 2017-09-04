@@ -5,6 +5,13 @@ namespace Viviniko\Permission\Repositories\Permission;
 interface PermissionRepository
 {
     /**
+     * Get all permissions.
+     *
+     * @return mixed
+     */
+    public function all();
+
+    /**
      * Paginate users.
      *
      * @param mixed $query
