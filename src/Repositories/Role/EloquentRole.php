@@ -2,6 +2,7 @@
 
 namespace Viviniko\Permission\Repositories\Role;
 
+use Illuminate\Support\Facades\DB;
 use Viviniko\Repository\SimpleRepository;
 use Illuminate\Support\Facades\Config;
 
