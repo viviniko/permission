@@ -39,7 +39,8 @@ class PermissionServiceProvider extends BaseServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'permission');
 
-        $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'entrust');
+        $config = $this->app['config']->get('entrust', []);
+        $this->app['config']->set('entrust', array_merge($config, require __DIR__ . '/../config/permission.php'));
 
         $this->registerRepositories();
 
