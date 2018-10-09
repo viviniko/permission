@@ -5,20 +5,22 @@ namespace Viviniko\Permission\Repositories\Permission;
 interface PermissionRepository
 {
     /**
+     * Paginate records.
+     *
+     * @param $pageSize
+     * @param string $searchName
+     * @param null $search
+     * @param null $order
+     * @return mixed
+     */
+    public function paginate($pageSize, $searchName = 'search', $search = null, $order = null);
+
+    /**
      * Get all permissions.
      *
      * @return mixed
      */
     public function all();
-
-    /**
-     * Paginate users.
-     *
-     * @param mixed $query
-     *
-     * @return \Viviniko\Repository\Builder
-     */
-    public function search($query);
 
 	/**
 	 * Finds the permission by given id.
@@ -60,6 +62,6 @@ interface PermissionRepository
      * @param string $key
      * @return mixed
      */
-    public function lists($column = 'display_name', $key = 'id');
+    public function pluck($column = 'display_name', $key = 'id');
 
 }

@@ -2,15 +2,12 @@
 
 namespace Viviniko\Permission\Repositories\User;
 
-use Viviniko\Repository\SimpleRepository;
+use Illuminate\Support\Facades\Config;
+use Viviniko\Repository\EloquentRepository;
 
-class EloquentUser extends SimpleRepository implements UserRepository
+class EloquentUser extends EloquentRepository implements UserRepository
 {
-    use ValidatesUserData;
-
-    protected $modelConfigKey = 'permission.user';
-
-    protected $fieldSearchable = [
+    protected $searchRules = [
         'id',
         'email' => 'like',
         'firstname' => 'like',
@@ -21,6 +18,11 @@ class EloquentUser extends SimpleRepository implements UserRepository
         'created_at' => 'betweenDate',
         'log_date' => 'betweenDate',
     ];
+
+    public function __construct()
+    {
+        parent::__construct(Config::get('permission.user'));
+    }
 
     /**
      * {@inheritdoc}

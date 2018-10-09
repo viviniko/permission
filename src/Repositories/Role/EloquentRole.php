@@ -3,14 +3,17 @@
 namespace Viviniko\Permission\Repositories\Role;
 
 use Illuminate\Support\Facades\DB;
-use Viviniko\Repository\SimpleRepository;
+use Viviniko\Repository\EloquentRepository;
 use Illuminate\Support\Facades\Config;
 
-class EloquentRole extends SimpleRepository implements RoleRepository
+class EloquentRole extends EloquentRepository implements RoleRepository
 {
-    protected $modelConfigKey = 'permission.role';
+    public function __construct()
+    {
+        parent::__construct(Config::get('permission.role'));
+    }
 
-	/**
+    /**
 	 * {@inheritdoc}
 	 */
 	public function getAllWithUsersCount()
@@ -18,7 +21,7 @@ class EloquentRole extends SimpleRepository implements RoleRepository
 		$roleUserTable = Config::get('permission.role_user_table');
 		$rolesTable = Config::get('permission.roles_table');
 
-		return $this->createModel()->newQuery()
+		return $this->createQuery()
             ->leftJoin($roleUserTable, "{$rolesTable}.id", '=', "{$roleUserTable}.role_id")
 			->select("{$rolesTable}.*", DB::raw("count({$roleUserTable}.user_id) as users_count"))
 			->groupBy("{$rolesTable}.id")
@@ -40,14 +43,6 @@ class EloquentRole extends SimpleRepository implements RoleRepository
      */
     public function findByName($name)
     {
-        return $this->findBy('name', $name)->first();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function lists($column = 'display_name', $key = 'id')
-    {
-        return $this->pluck($column, $key);
+        return $this->findBy('name', $name);
     }
 }

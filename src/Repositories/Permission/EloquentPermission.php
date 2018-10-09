@@ -2,25 +2,13 @@
 
 namespace Viviniko\Permission\Repositories\Permission;
 
-use Viviniko\Repository\SimpleRepository;
+use Illuminate\Support\Facades\Config;
+use Viviniko\Repository\EloquentRepository;
 
-class EloquentPermission extends SimpleRepository implements PermissionRepository
+class EloquentPermission extends EloquentRepository implements PermissionRepository
 {
-    protected $modelConfigKey = 'permission.permission';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function all()
+    public function __construct()
     {
-        return $this->search([])->get();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function lists($column = 'display_name', $key = 'id')
-    {
-        return $this->pluck($column, $key);
+        parent::__construct(Config::get('permission.permission'));
     }
 }

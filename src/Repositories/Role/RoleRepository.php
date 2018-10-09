@@ -7,13 +7,15 @@ use Viviniko\Permission\Models\Role;
 interface RoleRepository
 {
     /**
-     * Paginate users.
+     * Paginate records.
      *
-     * @param mixed $query
-     *
-     * @return \Viviniko\Repository\Builder
+     * @param $pageSize
+     * @param string $searchName
+     * @param null $search
+     * @param null $order
+     * @return mixed
      */
-    public function search($query);
+    public function paginate($pageSize, $searchName = 'search', $search = null, $order = null);
 
 	/**
 	 * Lists all system roles into $key => $column value pairs.
@@ -22,7 +24,7 @@ interface RoleRepository
 	 * @param string $key
 	 * @return mixed
 	 */
-	public function lists($column = 'display_name', $key = 'id');
+	public function pluck($column = 'display_name', $key = 'id');
 
 	/**
 	 * Get all system roles with number of users for each role.

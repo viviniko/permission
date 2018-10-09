@@ -5,13 +5,15 @@ namespace Viviniko\Permission\Repositories\User;
 interface UserRepository
 {
     /**
-     * Paginate users.
+     * Paginate records.
      *
-     * @param mixed $query
-     *
-     * @return \Viviniko\Repository\Builder
+     * @param $pageSize
+     * @param string $searchName
+     * @param null $search
+     * @param null $order
+     * @return mixed
      */
-    public function search($query);
+    public function paginate($pageSize, $searchName = 'search', $search = null, $order = null);
 
     /**
      * Find user by its id.
