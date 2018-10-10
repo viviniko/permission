@@ -2,18 +2,18 @@
 
 namespace Viviniko\Permission\Repositories\User;
 
+use Viviniko\Repository\SearchRequest;
+
 interface UserRepository
 {
     /**
-     * Paginate records.
+     * Search.
      *
-     * @param $pageSize
-     * @param string $searchName
-     * @param null $search
-     * @param null $order
-     * @return mixed
+     * @param SearchRequest $searchRequest
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
      */
-    public function paginate($pageSize, $searchName = 'search', $search = null, $order = null);
+    public function search(SearchRequest $searchRequest);
 
     /**
      * Find user by its id.
