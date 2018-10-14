@@ -24,7 +24,7 @@ interface RoleRepository
 	 * @param string $key
 	 * @return mixed
 	 */
-	public function pluck($column = 'display_name', $key = 'id');
+	public function pluck($column, $key = 'id');
 
 	/**
 	 * Get all system roles with number of users for each role.
