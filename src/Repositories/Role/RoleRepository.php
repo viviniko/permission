@@ -6,17 +6,6 @@ use Viviniko\Permission\Models\Role;
 
 interface RoleRepository
 {
-    /**
-     * Paginate records.
-     *
-     * @param $pageSize
-     * @param string $searchName
-     * @param null $search
-     * @param null $order
-     * @return mixed
-     */
-    public function paginate($pageSize, $searchName = 'search', $search = null, $order = null);
-
 	/**
 	 * Lists all system roles into $key => $column value pairs.
 	 *
