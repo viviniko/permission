@@ -3,6 +3,7 @@
 namespace Viviniko\Permission\Services;
 
 use Illuminate\Http\Request;
+use Viviniko\Permission\Repositories\Permission\PermissionRepository;
 use Viviniko\Permission\Repositories\User\UserRepository;
 use Viviniko\Repository\SearchPageRequest;
 
@@ -12,6 +13,11 @@ class PermissionServiceImpl implements PermissionService
      * @var \Viviniko\Permission\Repositories\User\UserRepository
      */
     protected $userRepository;
+
+    /**
+     * @var \Viviniko\Permission\Repositories\Permission\PermissionRepository
+     */
+    protected $permissionRepository;
 
     /**
      * @var \Illuminate\Http\Request
@@ -33,9 +39,10 @@ class PermissionServiceImpl implements PermissionService
         'log_date' => 'betweenDate',
     ];
 
-    public function __construct(UserRepository $userRepository, Request $request)
+    public function __construct(UserRepository $userRepository, PermissionRepository $permissionRepository, Request $request)
     {
         $this->userRepository = $userRepository;
+        $this->permissionRepository = $permissionRepository;
         $this->request = $request;
     }
 
@@ -81,5 +88,10 @@ class PermissionServiceImpl implements PermissionService
     public function deleteUser($id)
     {
         return $this->userRepository->delete($id);
+    }
+
+    public function permissions()
+    {
+        return $this->permissionRepository->all();
     }
 }
