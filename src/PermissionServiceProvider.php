@@ -87,8 +87,16 @@ class PermissionServiceProvider extends BaseServiceProvider
     private function registerServices()
     {
         $this->app->singleton(
+            \Viviniko\Permission\Services\UserService::class,
+            \Viviniko\Permission\Services\Impl\UserServiceImpl::class
+        );
+        $this->app->singleton(
             \Viviniko\Permission\Services\PermissionService::class,
-            \Viviniko\Permission\Services\PermissionServiceImpl::class
+            \Viviniko\Permission\Services\Impl\PermissionServiceImpl::class
+        );
+        $this->app->singleton(
+            \Viviniko\Permission\Services\RoleService::class,
+            \Viviniko\Permission\Services\Impl\RoleServiceImpl::class
         );
     }
 
@@ -100,7 +108,9 @@ class PermissionServiceProvider extends BaseServiceProvider
     public function provides()
     {
         return [
-            \Viviniko\Permission\Services\PermissionService::class
+            \Viviniko\Permission\Services\UserService::class,
+            \Viviniko\Permission\Services\PermissionService::class,
+            \Viviniko\Permission\Services\RoleService::class,
         ];
     }
 }
