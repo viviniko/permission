@@ -56,8 +56,8 @@ class CreatePermissionTable extends Migration
         // Create table for storing admin users
         Schema::create($this->usersTable, function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstname', 32);
-            $table->string('lastname', 32);
+            $table->string('first_name', 32);
+            $table->string('last_name', 32);
             $table->string('email', 128)->unique();
             $table->string('phone', 11)->nullable()->unique();
             $table->string('password');

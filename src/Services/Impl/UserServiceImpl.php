@@ -23,9 +23,9 @@ class UserServiceImpl extends AbstractRequestRepositoryService implements UserSe
     protected $searchRules = [
         'id',
         'email' => 'like',
-        'firstname' => 'like',
-        'lastname' => 'like',
-        'name' => 'firstname:like|lastname:like',
+        'first_name' => 'like',
+        'last_name' => 'like',
+        'name' => 'first_name:like|last_name:like',
         'is_active',
         'phone' => 'like',
         'created_at' => 'betweenDate',
