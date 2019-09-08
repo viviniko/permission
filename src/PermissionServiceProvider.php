@@ -2,8 +2,10 @@
 
 namespace Viviniko\Permission;
 
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Viviniko\Permission\Console\Commands\PermissionTableCommand;
+use Viviniko\Permission\Listeners\UserEventSubscriber;
 
 class PermissionServiceProvider extends BaseServiceProvider
 {
@@ -41,6 +43,8 @@ class PermissionServiceProvider extends BaseServiceProvider
 
         $config = $this->app['config']->get('entrust', []);
         $this->app['config']->set('entrust', array_merge($config, require __DIR__ . '/../config/permission.php'));
+
+        Event::subscribe(UserEventSubscriber::class);
 
         $this->registerRepositories();
 
