@@ -30,6 +30,8 @@ class PermissionServiceProvider extends BaseServiceProvider
 
         // Register commands
         $this->commands('command.permission.table');
+
+        Event::subscribe(UserEventSubscriber::class);
     }
 
     /**
@@ -43,8 +45,6 @@ class PermissionServiceProvider extends BaseServiceProvider
 
         $config = $this->app['config']->get('entrust', []);
         $this->app['config']->set('entrust', array_merge($config, require __DIR__ . '/../config/permission.php'));
-
-        Event::subscribe(UserEventSubscriber::class);
 
         $this->registerRepositories();
 
