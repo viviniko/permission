@@ -16,7 +16,7 @@
         "illuminate/http": "^6.0",
         "viviniko/repository": "dev-master",
         "viviniko/support": "dev-master",
-        "zizaco/entrust": "^1.8"
+        "spatie/laravel-permission": "^3.2"
     },
     "autoload": {
         "psr-0": {
