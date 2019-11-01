@@ -34,11 +34,22 @@ class PermissionServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'permission');
+        $this->registerConfig();
 
         $this->registerRepositories();
 
         $this->registerCommands();
+    }
+
+    private function registerConfig()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'permission');
+        $config = $this->app['config']['permission'];
+        foreach (array_keys($config['models']) as $configKey) {
+            if (array_key_exists($config, $configKey)) {
+                $config['models'][$configKey] = $config[$configKey];
+            }
+        }
     }
 
     /**

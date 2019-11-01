@@ -25,4 +25,14 @@ return [
     |
     */
     'password_resets_table' => 'permission_password_resets',
+
+    'permissions_table' => 'permission_permissions',
+
+    'roles_table' => 'permission_roles',
+
+    'model_has_permissions' => 'permission_permissionables',
+
+    'model_has_roles' => 'permission_roleables',
+
+    'role_has_permissions' => 'permission_role_permissions',
 ];
