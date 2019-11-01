@@ -3,9 +3,8 @@
 namespace Viviniko\Permission\Models;
 
 use Illuminate\Support\Facades\Config;
-use Zizaco\Entrust\EntrustPermission;
 
-class Permission extends EntrustPermission
+class Permission
 {
     protected $fillable = ['name', 'display_name', 'description'];
 
