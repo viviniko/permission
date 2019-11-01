@@ -9,6 +9,6 @@ class EloquentUser extends EloquentRepository implements UserRepository
 {
     public function __construct()
     {
-        parent::__construct(Config::get('permission.models.user'));
+        parent::__construct(Config::get('permission.user'));
     }
 }

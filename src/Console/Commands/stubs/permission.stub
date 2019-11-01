@@ -19,8 +19,8 @@ class CreatePermissionTable extends Migration
 
 
     public function __construct() {
-        $this->usersTable = Config::get('permission.table_names.users_table');
-        $this->passwordResetsTable = Config::get('permission.table_names.password_resets_table');
+        $this->usersTable = Config::get('permission.users_table');
+        $this->passwordResetsTable = Config::get('permission.password_resets_table');
     }
 
     /**

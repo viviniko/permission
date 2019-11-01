@@ -42,7 +42,7 @@ class User extends Authenticatable
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->table = Config::get('permission.table_names.users_table');
+        $this->table = Config::get('permission.users_table');
     }
 
     /**
