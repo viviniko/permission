@@ -10,13 +10,6 @@ use Viviniko\Permission\Listeners\UserEventSubscriber;
 class PermissionServiceProvider extends BaseServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
      * Bootstrap the application services.
      *
      * @return void
@@ -43,12 +36,7 @@ class PermissionServiceProvider extends BaseServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'permission');
 
-        $config = $this->app['config']->get('entrust', []);
-        $this->app['config']->set('entrust', array_merge($config, require __DIR__ . '/../config/permission.php'));
-
         $this->registerRepositories();
-
-        $this->registerServices();
 
         $this->registerCommands();
     }
@@ -88,22 +76,6 @@ class PermissionServiceProvider extends BaseServiceProvider
         );
     }
 
-    private function registerServices()
-    {
-        $this->app->singleton(
-            \Viviniko\Permission\Services\UserService::class,
-            \Viviniko\Permission\Services\Impl\UserServiceImpl::class
-        );
-        $this->app->singleton(
-            \Viviniko\Permission\Services\PermissionService::class,
-            \Viviniko\Permission\Services\Impl\PermissionServiceImpl::class
-        );
-        $this->app->singleton(
-            \Viviniko\Permission\Services\RoleService::class,
-            \Viviniko\Permission\Services\Impl\RoleServiceImpl::class
-        );
-    }
-
     /**
      * Get the services provided by the provider.
      *
@@ -112,9 +84,6 @@ class PermissionServiceProvider extends BaseServiceProvider
     public function provides()
     {
         return [
-            \Viviniko\Permission\Services\UserService::class,
-            \Viviniko\Permission\Services\PermissionService::class,
-            \Viviniko\Permission\Services\RoleService::class,
         ];
     }
 }

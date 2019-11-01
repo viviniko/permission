@@ -9,6 +9,6 @@ class EloquentPermission extends EloquentRepository implements PermissionReposit
 {
     public function __construct()
     {
-        parent::__construct(Config::get('permission.permission'));
+        parent::__construct(Config::get('permission.models.permission'));
     }
 }
