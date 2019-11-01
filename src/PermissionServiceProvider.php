@@ -46,7 +46,12 @@ class PermissionServiceProvider extends BaseServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/permission.php', 'permission');
         $config = $this->app['config']['permission'];
         foreach (array_keys($config['models']) as $configKey) {
-            if (array_key_exists($config, $configKey)) {
+            if ($value = data_get($config, $configKey)) {
+                $this->app['config']->set('permission.models.'.$configKey, $value);
+            }
+        }
+        foreach (array_keys($config['tables']) as $configKey) {
+            if (data_get($config, $configKey)) {
                 $config['models'][$configKey] = $config[$configKey];
             }
         }
