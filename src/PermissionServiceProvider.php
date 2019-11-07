@@ -50,9 +50,9 @@ class PermissionServiceProvider extends BaseServiceProvider
                 $this->app['config']->set('permission.models.'.$key, $value);
             }
         }
-        foreach (array_keys($config['tables']) as $key) {
+        foreach (array_keys($config['table_names']) as $key) {
             if ($value = data_get($config, $key)) {
-                $this->app['config']->set('permission.tables.'.$key, $value);
+                $this->app['config']->set('permission.table_names.'.$key, $value);
             }
         }
     }
